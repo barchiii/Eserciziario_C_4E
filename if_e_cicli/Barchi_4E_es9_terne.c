@@ -27,8 +27,15 @@ int main(int argc, char* argv[])
         if(A < B && B < C)
         {
 
-            min = A;
-            max = C;
+            if (A < min)
+            {
+                min = A;
+            }
+                
+            if (C > max)
+            {
+            	max = C;
+            }
 
         }
 

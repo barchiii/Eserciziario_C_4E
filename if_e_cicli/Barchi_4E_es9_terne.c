@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
         }
 
         else
-            printf("\nTerna inserita non valida\n")
+            printf("\nTerna inserita non valida\n");
     }while(A >= 0 && B >= 0 && C >= 0);
 
     printf("Il numero minimo e': %d\n", min);

@@ -12,8 +12,8 @@ Quando la cassiera inserisce la stringa “esci” il software deve mostrare a v
 int main(int argc, char *argv[])
 {
 
-    char opzione[12] // posso fare anche un menu di scelta
-    double mediaBev, mediaRist, sommaBev = 0, sommaRist = 0, importo;
+    char opzione[12]; // posso fare anche un menu di scelta
+    float mediaBev, mediaRist, sommaBev = 0, sommaRist = 0, importo;
     int nBev = 0, nRist = 0;
 
     do
@@ -22,24 +22,23 @@ int main(int argc, char *argv[])
         do
         {
 
-            printf("Inserisci la tipologia: ");
-            scanf("%s", opzione);
+            printf("\nInserisci la tipologia: ");
+            scanf("%s", &opzione);
 
         } while (strcmp("bevande", opzione) != 0 && strcmp("ristorazione", opzione) != 0 && strcmp("esci", opzione) != 0);
-
-        do
-        {
-
-            printf("\nInserisci l'importo: ");
-            scanf("%f", importo);
-
-        } while (importo <= 0);
 
         if (strcmp("bevande", opzione) == 0)
         {
 
             nBev++;
             sommaBev += importo;
+            do
+            {
+
+                printf("\nInserisci l'importo: ");
+                scanf("%f", importo);
+
+            } while (importo <= 0);
 
         }
 
@@ -48,25 +47,32 @@ int main(int argc, char *argv[])
 
             nRist++;
             sommaRist += importo;
+            do
+            {
+
+                printf("\nInserisci l'importo: ");
+                scanf("%f", importo);
+
+            } while (importo <= 0);
 
         }
 
     } while (strcmp("esci", opzione) != 0);
 
     if (nRist > nBev)
-        printf("Sono state vendute piu' ristorazioni");
+        printf("\nSono state vendute piu' ristorazioni");
 
     else if (nBev > nRist)
-        printf("Sono state vendute piu' bevande");
+        printf("\nSono state vendute piu' bevande");
 
     else
-        printf("E' stato venduto lo stesso numero di bevande e ristorazioni");
+        printf("\nE' stato venduto lo stesso numero di bevande e ristorazioni");
 
-    mediaBev = sommaBev / (double)bevande;
-    mediaRist = sommaRist / (double)rist;
+    mediaBev = sommaBev / (double)nBev;
+    mediaRist = sommaRist / (double)nRist;
 
-    printf("La media delle bevande è: %.2f\n", mediaBev);
-    printf("La media delle ristorazioni è: %.2f\n", mediaRist);
+    printf("\nLa media delle bevande è: %.2f\n", mediaBev);
+    printf("\nLa media delle ristorazioni è: %.2f\n", mediaRist);
 
     return 0;
 }
